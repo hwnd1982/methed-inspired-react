@@ -1,0 +1,27 @@
+.subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #8a8a8a;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+.color {
+  margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 540px) {
+    margin-bottom: 12px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+}

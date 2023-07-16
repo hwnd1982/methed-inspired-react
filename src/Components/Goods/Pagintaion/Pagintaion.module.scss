@@ -1,0 +1,16 @@
+.pagination {
+  margin: 0 auto;
+  width: max-content;
+  display: flex;
+  gap: 16px;
+  padding-top: 40px;
+}
+
+.arrow {
+  color: #000;
+
+  &Disabled {
+    pointer-events: none;
+    color: #8a8a8a;
+  }
+}
