@@ -29,13 +29,13 @@ export const Top = () => {
             <li className={s.topNavItem}>
               <NavLink to='/cart' className={s.topLink}>
                 <CartSVG />
-                {totalCount && <span className={s.topLinkCount}>{totalCount}</span>}
+                {+totalCount && <span className={s.topLinkCount}>{totalCount}</span>}
               </NavLink>
             </li>
             <li className={s.topNavItem}>
               <NavLink to='/favorite' className={cn(s.topLink, s.like)}>
                 <LikeSVG />
-                {favoritesCount && <span className={s.topLinkCount}>{favoritesCount}</span>}
+                {+favoritesCount && <span className={s.topLinkCount}>{favoritesCount}</span>}
               </NavLink>
             </li>
           </ul>
