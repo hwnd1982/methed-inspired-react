@@ -29,7 +29,7 @@ export const Top = () => {
             <li className={s.topNavItem}>
               <NavLink to='/cart' className={s.topLink}>
                 <CartSVG />
-                {totalCount && <span className={s.topLinkCount}>{totalCount}</span>}
+                {totalCount ? <span className={s.topLinkCount}>{totalCount}</span> : ''}
               </NavLink>
             </li>
             <li className={s.topNavItem}>
