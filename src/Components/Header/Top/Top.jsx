@@ -35,7 +35,7 @@ export const Top = () => {
             <li className={s.topNavItem}>
               <NavLink to='/favorite' className={cn(s.topLink, s.like)}>
                 <LikeSVG />
-                {favoritesCount && <span className={s.topLinkCount}>{favoritesCount}</span>}
+                {favoritesCount ? <span className={s.topLinkCount}>{favoritesCount}</span> : ''}
               </NavLink>
             </li>
           </ul>
