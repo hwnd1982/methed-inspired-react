@@ -75,7 +75,9 @@ export const ProductPage = () => {
   useEffect(() => {
     const {id, gender, category} = data;
     
-    dispatch(fetchCategoryGoods({gender, category, count: 4, top: true, exclude: [id]}));
+    if (id) {
+      dispatch(fetchCategoryGoods({gender, category, count: 4, top: true, exclude: [id]}));
+    }
   }, [dispatch, data]);
 
   useEffect(() => {
@@ -141,7 +143,7 @@ export const ProductPage = () => {
           </form>
         </Container>
       </section>
-      <Goods title={'Вам также может понравиться'} />
+      <Goods title={'Вам также может понравиться'} count={4} showCount={false}/>
     </>
   );
 }

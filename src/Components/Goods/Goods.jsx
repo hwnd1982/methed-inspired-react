@@ -5,14 +5,15 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Pagintaion } from "./Pagintaion/Pagintaion";
 
-export const Goods = ({title, count = 8}) => {
+export const Goods = ({title, count = 8, showCount = true}) => {
   const {list: goods, totalCount, status} = useSelector(state => state.goods);
   const initialGoods = new Array(count).fill(null);
-  
+  console.log(goods, status);
+
   return (
     <section className={s.goods}>
       <Container>
-      <h2 className={s.title}>{`${title}${totalCount ? ` (${totalCount})` : ''}`}</h2>
+      <h2 className={s.title}>{`${title}${totalCount && showCount ? ` (${totalCount})` : ''}`}</h2>
       {status === 'success' && !goods.length ?       
         <p className={s.empty}>Товаров не найдено...</p> :
         <ul className={s.list}>
@@ -36,4 +37,5 @@ export const Goods = ({title, count = 8}) => {
 Goods.propTypes = {
   title: PropTypes.string,
   count: PropTypes.number,
+  showCount: PropTypes.bool,
 }

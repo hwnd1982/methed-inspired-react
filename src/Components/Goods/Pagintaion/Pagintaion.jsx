@@ -1,14 +1,27 @@
 import s from './Pagintaion.module.scss';
 import cn from 'classnames';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ReactComponent as ArrowRightSVG } from '/src/assets/arrow-right.svg';
 import { ReactComponent as ArrowLeftSVG } from '/src/assets/arrow-left.svg';
 import { PagintaionList } from './PagintaionList/PagintaionList';
+import { useEffect } from 'react';
 
 export const Pagintaion = () => {
-  const {pathname} = useLocation();
+  const {pathname, search} = useLocation();
+  const navigate = useNavigate();
   const {pages, page} = useSelector(state => state.goods);
+
+  useEffect(() => {
+    if (search) {
+      const page = +search.replace(/[?|&]page=(\d+)/, '$1');
+
+      console.log(page);
+      if (pages && page && page > pages) {
+        navigate(`${pathname}?page=${pages}`)
+      }
+    }
+  }, [pages, search, navigate, pathname])
   
   return (
     <>

@@ -20,7 +20,7 @@ export const FavoritesPage = () => {
   }, [dispatch, favorites, page]);
 
   return (
-    <Goods title='Избранное' />
+    <Goods title='Избранное' count={12} />
   )
 }
 
