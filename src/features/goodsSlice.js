@@ -25,6 +25,21 @@ export const fetchCategoryGoods = createAsyncThunk(
   }
 );
 
+export const fetchGoodsAll = createAsyncThunk(
+  "goods/fetchGoodsAll",
+  async (param) => {
+    const url = new URL(GOODS_URL);
+
+    for(const key in param) {
+      url.searchParams.append(key, param[key]);
+    }
+    
+    url.searchParams.append('count', 'all');
+
+    return await (await fetch(url)).json();
+  }
+);
+
 const goodsSlice = createSlice({
   name: "goods",
   initialState: {
@@ -44,7 +59,7 @@ const goodsSlice = createSlice({
     builder
       .addCase(fetchGenderGoods.pending, (state) => {
         state.status = "loading";
-        // state.list = [];
+        state.list = [];
         state.error = null;
         state.pages = 0;
         state.totalCount = null;
@@ -61,7 +76,7 @@ const goodsSlice = createSlice({
       })
       .addCase(fetchCategoryGoods.pending, (state) => {
         state.status = "loading";
-        // state.list = [];
+        state.list = [];
         state.error = null;
         state.pages = 0;
         state.totalCount = null;
@@ -74,6 +89,23 @@ const goodsSlice = createSlice({
 
       })
       .addCase(fetchCategoryGoods.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message
+      })
+      .addCase(fetchGoodsAll.pending, (state) => {
+        state.status = "loading";
+        state.list = [];
+        state.error = null;
+        state.pages = 0;
+        state.totalCount = null;
+      })
+      .addCase(fetchGoodsAll.fulfilled, (state, action) => {
+        state.status = "success";
+        state.list = action.payload;
+        state.pages = 0;
+        state.totalCount = null;
+      })
+      .addCase(fetchGoodsAll.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message
       });

@@ -70,3 +70,16 @@
     border-color: #404040;
   }
 }
+
+.skeleton {
+  min-height: 451px;
+  margin-bottom: 80px;
+
+  @media (max-width: 768px) {
+    min-height: 450px;
+  }
+    
+  @media (max-width: 540px) {
+    min-height: 450px;
+  }
+}

@@ -39,7 +39,7 @@ export const MainPage = () => {
   
   return (
     <Main>
-      {!category && banner && <Banner banner={banner}/>}
+      {!category && <Banner banner={banner}/>}
       <Goods title={title} />
     </Main>
   )

@@ -5,34 +5,51 @@ import { NavLink } from 'react-router-dom';
 import { API_URL } from '../../const';
 import { useEffect, useState } from 'react';
 import { useMedia } from 'react-use';
+import Skeleton from '../Skeleton/Skeleton';
 
 const Banner = ({banner}) => {
-  const [imgURL, setImgURL] = useState(banner.bg.desktop);
+  const [imgURL, setImgURL] = useState('');
   const isMobile = useMedia('(max-width: 540px)');
   const isTablet = useMedia('(max-width: 768px)');
   const isLaptop = useMedia('(max-width: 1024px)');
 
   useEffect(() => {
+    let src = '';
+    const imgLoader = document.createElement('img');
+    const setIsLoad =  () => {
+      if (imgLoader.src === `${API_URL}/${src}`) {
+        setImgURL(`${API_URL}/${src}`);
+      }
+    };
+
     switch (true) {
       case isMobile:
-        setImgURL(banner.bg.mobile)
+        src = banner?.bg.mobile;
         break;
       case isTablet:
-        setImgURL(banner.bg.tablet)
+        src = banner?.bg.tablet;
         break;
       case isLaptop:
-        setImgURL(banner.bg.laptop)
+        src = banner?.bg.laptop;
         break;
       default: 
-        setImgURL(banner.bg.desktop)
+        src = banner?.bg.desktop;
     }
-  }, [banner, isMobile, isTablet, isLaptop]);
 
-  return (
+    if (src && imgURL !== `${API_URL}/${src}`) {
+      imgLoader.onload = setIsLoad;
+      imgLoader.src = `${API_URL}/${src}`;
+
+      setImgURL('');
+    }
+
+  }, [banner, isMobile, isTablet, isLaptop, imgURL]);
+
+  return ( banner && imgURL ?
     <section 
     className={s.banner}
-    style={{
-      backgroundImage: `url(${API_URL}/${imgURL})`
+    style={imgURL && {
+      backgroundImage: `url(${imgURL})`
     }}
     >
       <Container>
@@ -43,7 +60,8 @@ const Banner = ({banner}) => {
           </NavLink>
         </div>
       </Container>
-    </section>
+    </section> :
+    <Skeleton className={s.skeleton} />
   )
 }
 

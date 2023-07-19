@@ -14,7 +14,7 @@ export const ColorList = ({ colors, selectedColor, handleColor }) => {
           return <ColorLabel
             key={id}
             color={color}
-            check={!i} 
+            check={!i}
             selectedColor={selectedColor}
             handleColor={handleColor}
             />

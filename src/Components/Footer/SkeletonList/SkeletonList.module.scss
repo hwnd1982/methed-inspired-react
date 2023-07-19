@@ -1,0 +1,39 @@
+.skeleton {
+  display: flex;
+  gap: 80px;
+
+  @media (max-width: 1024px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  &Subtitle {           
+    min-height: 17px;
+    margin-bottom: 10px;
+    width: 90px;
+    
+    @media (max-width: 768px) {
+      min-height: 15px;
+      margin-bottom: 0;
+    }
+  }
+    
+  &Sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 80px;
+  }
+
+  &Item {
+    min-height: 17px;
+  }
+      
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

@@ -34,10 +34,15 @@
     width: 100%;
     height: auto;
   }
+
+  &.skeleton {
+    background-size: 350% 100%;
+  }
 }
 
 .content {
   max-width: 335px;
+  width: 100%;
 
   @media (max-width: 768px) {
     max-width: 300px;
@@ -54,11 +59,13 @@
   line-height: 22px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  min-height: 22px;
 
   @media (max-width: 768px) {
     font-size: 14px;
     line-height: 17px;
     margin-bottom: 12px;
+    min-height: 17px;
   }
 
   @media (max-width: 540px) {
@@ -71,11 +78,17 @@
   line-height: 22px;
   text-transform: uppercase;
   margin-bottom: 40px;
+  min-height: 22px;
 
   @media (max-width: 768px) {
     font-size: 14px;
     line-height: 17px;
     margin-bottom: 16px;
+    min-height: 17px;
+  }
+
+  &.skeleton {
+    max-width: 100px;
   }
 }
 
@@ -138,6 +151,11 @@
   @media (max-width: 540px) {
     margin-bottom: 16px;
   }
+
+  .skeleton {
+    min-height: 180px;
+    width: 100%;
+  }
 }
 
 .descriptionTitle {
@@ -169,6 +187,11 @@
   @media (max-width: 540px) {
     margin-right: 10px;
   }
+
+  &.skeleton {
+    min-height: 46px;
+    min-width: 107px;
+  }
 }
 
 .addCart {
@@ -182,11 +205,36 @@
   border: none;
   padding: 14px 41px 15px;
   margin-right: 16px;
+  min-height: 46px;
+  min-width: 162px;
+
+  &:disabled {
+    background-color: #8a8a8a;
+    pointer-events: none;
+  }
+  
 
   @media (max-width: 768px) {
     padding: 12px 41px;
     font-size: 10px;
     line-height: 12px;
     margin-right: 8px;
+  }
+
+  &.skeleton {
+    margin-right: 40px;
+
+    @media (max-width: 768px) {
+      margin-right: 32px;
+    }
+  }
+}
+
+.id {
+  min-height: 15px;
+  
+  &.skeleton {
+    flex-shrink: 0;
+    min-width: 70px;
   }
 }

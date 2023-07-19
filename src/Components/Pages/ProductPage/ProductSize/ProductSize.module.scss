@@ -54,4 +54,10 @@
   font-size: 14px;
   line-height: 17px;
   text-transform: uppercase;
+  
+  &.skeleton {
+    border: #fff0;
+    min-height: 25px;
+    min-width: 40px;
+  }
 }
