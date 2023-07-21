@@ -5,6 +5,7 @@ import { Root } from "./routes/Root/Root";
 import { ProductPage } from "./Components/Pages/ProductPage/ProductPage";
 import { FavoritesPage } from "./Components/Pages/FavoritesPage/FavoritesPage";
 import { CartPage } from "./Components/Pages/CartPage/CartPage";
+import { SearchPage } from "./Components/Pages/SearchPage/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path="/cart" element={<CartPage />} />
       <Route path="/catalog/:gender/:category?" element={<MainPage />} />
       <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/search" element={<SearchPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

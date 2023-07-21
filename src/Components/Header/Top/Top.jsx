@@ -6,11 +6,17 @@ import { ReactComponent as LikeSVG } from '/src/assets/like.svg';
 import { ReactComponent as CartSVG } from '/src/assets/cart.svg';
 import { ReactComponent as SearchSVG } from '/src/assets/search.svg';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
+import { toggleSearch } from '../../../features/searchSlice';
 
 export const Top = () => {
+  const dispatch = useDispatch();
   const totalCount = +useSelector(state => state.cart)?.totalCount;
-  const favoritesCount = useSelector(state => state.favorites).length;
+  const favoritesCount = useSelector(state => state.favorites)?.length;
+
+  const handleSearch = () => {
+    dispatch(toggleSearch())
+  }
 
   return (
     <div className={s.top}>
@@ -22,7 +28,7 @@ export const Top = () => {
         <div className={s.topNavigation}>
           <ul className={s.topNavList}>
             <li className={s.topNavItem}>
-              <button className={s.topLink}>
+              <button onClick={handleSearch} className={s.topLink}>
                 <SearchSVG />
               </button>
             </li>

@@ -16,7 +16,6 @@ export const Pagintaion = () => {
     if (search) {
       const page = +search.replace(/[?|&]page=(\d+)/, '$1');
 
-      console.log(page);
       if (pages && page && page > pages) {
         navigate(`${pathname}?page=${pages}`)
       }

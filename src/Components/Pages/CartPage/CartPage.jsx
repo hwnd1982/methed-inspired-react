@@ -27,7 +27,7 @@ export const CartPage = () => {
   return (
       <>
         <Cart list={list} />
-        <Order list={list}/>
+        {list.length ? <Order list={cartItems}/> : ''}
       </>
   )
 }
