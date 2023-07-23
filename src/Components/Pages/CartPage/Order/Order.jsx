@@ -1,11 +1,15 @@
 import PropTypes from 'prop-types'
 import s from './Order.module.scss';
+import { useDispatch } from "react-redux";
 import { Container } from '../../../Layout/Container/Container';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { PatternFormat } from 'react-number-format';
 import * as Yup from 'yup';
+import { sendOrder } from '../../../../features/cartSlice';
 
 const Order = ({list}) => {
+  const dispatch = useDispatch();
+
   const validationSchema = Yup.object({
     fio: Yup
       .string()
@@ -29,7 +33,7 @@ const Order = ({list}) => {
   });
 
   const handleSubmitOrder = values => {
-    console.log({values, list});
+    dispatch(sendOrder({order: list, values}));
   };
 
   return (

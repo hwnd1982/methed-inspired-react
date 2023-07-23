@@ -29,10 +29,10 @@ const navgationSlice = createSlice({
       state.error = null;
     })
     .addCase(fetchNavgation.fulfilled, (state, action) => {
-      const genderList = Object.keys(action.payload);
+      const genderList = action?.payload ? Object.keys(action?.payload) : [];
 
       state.status = 'success';
-      state.list = action.payload;
+      state.list = action?.payload || [];
       state.genderList = genderList;
       state.gender = state.gender || genderList[0];
     })

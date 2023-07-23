@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from "react";
 import { useEffect } from "react";
 import { fetchGoodsAll } from "../../../features/goodsSlice";
+import OrderModal from "./OrderModal/OrderModal";
 
 export const CartPage = () => {
   const dispatch = useDispatch();
-  const { cartItems, countItems } = useSelector(state => state.cart);
+  const { cartItems, countItems, orderStatus } = useSelector(state => state.cart);
   const { list: goodsList } = useSelector(state => state.goods);
   const [count, setCount] = useState(0);
   const list = cartItems.map(item => {
@@ -27,7 +28,8 @@ export const CartPage = () => {
   return (
       <>
         <Cart list={list} />
-        {list.length ? <Order list={cartItems}/> : ''}
+        {!!list.length && <Order list={cartItems}/>}
+        {orderStatus === 'success' && <OrderModal />}
       </>
   )
 }

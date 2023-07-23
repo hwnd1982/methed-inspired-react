@@ -66,6 +66,15 @@
     font-size: 12px;
     line-height: 15px;
   }
+
+  &.skeleton {
+    min-height: 17px;
+    width: 100%;
+    
+    @media (max-width: 540px) {
+      min-height: 15px;
+    }
+  }
 }
 
 .empty {

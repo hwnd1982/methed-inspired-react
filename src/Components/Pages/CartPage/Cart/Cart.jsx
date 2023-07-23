@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import s from './Cart.module.scss';
 import { Container } from '../../../Layout/Container/Container';
 import CartItem from './CartItem/CartItem';
+import Skeleton from '../../../Skeleton/Skeleton';
+import cn from 'classnames';
 
 
 const Cart = ({list}) => {
@@ -20,10 +22,10 @@ const Cart = ({list}) => {
                 </li>
               ))}
             </ul>  
-            <div className={s.total}>
+            {totalPrice ? <div className={s.total}>
               <p>Итого:</p>
               <p>руб {totalPrice}</p>
-            </div>
+            </div> : <Skeleton className={cn(s.total, s.skeleton)} />}
           </> :
           <p className={s.empty}>Корзина пуста...</p>
         }

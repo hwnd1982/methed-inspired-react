@@ -1,7 +1,8 @@
-export const API_URL = 'https://evening-proximal-lizard.glitch.me';
+export const API_URL = 'https://seasoned-unequaled-attack.glitch.me';
 export const GOODS_URL = `${API_URL}/api/goods`;
 export const CATEGOY_URL = `${API_URL}/api/categories`;
 export const COLORS_URL = `${API_URL}/api/colors`;
+export const ORDER_URL = `${API_URL}/api/order`;
 
 export const DATA = {};
 
@@ -26,12 +27,13 @@ export const getData = async (urlApi, param, cbError = () => {}) => {
     return data;
 
   } catch (err) {
-    console.warn(err);
+    console.warn(err.message);
     if (typeof param === "function") {
       param(err);
     } else {
       cbError(err);
     }
+    throw new Error(err.message);
   }
 };
 
